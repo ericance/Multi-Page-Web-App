@@ -1,0 +1,36 @@
+﻿@model List<Phone>
+@{ 
+    ViewBag.Title = "Phone Contacts";
+}
+<header class="jumbotron">
+    <h2>Phone Contacts</h2>
+</header>
+<a asp-controller="Phone" asp-action="Add">Add New Contact</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Address</th>
+            <th>Note</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var phone in Model)
+        {
+        <tr>
+            <td>@phone.Name</td>
+            <td>@phone.Number</td>
+            <td>@phone.Address</td>
+            <td>@phone.Note</td>
+            <td>
+                <a asp-controller="Phone" asp-action="Edit"
+                   asp-route-id="@phone.PhoneId">Edit</a>
+                <a asp-controller="Phone" asp-action="Delete"
+                   asp-route-id="@phone.PhoneId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
